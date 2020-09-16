@@ -10,8 +10,9 @@
 mod_draw_box_ui <- function(id){
   ns <- NS(id)
   tagList(
-    h3(emo::ji_glue("Draw either Yes :white_check_mark: or No :x:.")),
-    h4("Click once to start drawing and click once again to stop drawing"),
+    h4(emo::ji_glue("Draw either Yes :white_check_mark: or No :x:")),
+    "Click once to start drawing and click once again to stop drawing",
+    tags$br(),tags$br(),
     column(12,align = "center",
            plotOutput(ns("plot"), width = "300px", height = "300px",
                       hover=hoverOpts(id = ns("hover"), delay = 70,

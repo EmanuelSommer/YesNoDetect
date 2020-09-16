@@ -55,7 +55,12 @@ app_ui <- function(request) {
         fullSlide(
           fullContainer(
             h1("Amend the database"),
-            mod_draw_box_ui("draw_box_db")
+            fullColumn(width = 6,
+                       h2(tags$strong("1")),
+                       mod_draw_box_ui("draw_box_db")
+                       ),
+            fullColumn(width = 6,
+                       mod_save_box_ui("save_box_ui"))
           )
         )
       ),

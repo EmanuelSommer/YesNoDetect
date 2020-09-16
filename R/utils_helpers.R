@@ -8,6 +8,8 @@
 #' @return a 28x28 matrix of 0 and 1
 #' @export
 #' 
+#' @import dplyr
+#' 
 #' @author Emanuel Sommer
 #' @examples build_matrix(c(1,1,3.3,5,27.9),c(1,1,7.000012,5.555,28))
 build_matrix <- function(x,y) {
@@ -22,3 +24,4 @@ build_matrix <- function(x,y) {
   }
   return(mat)
 }
+

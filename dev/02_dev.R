@@ -15,16 +15,16 @@
 
 ## Dependencies ----
 ## Add one line by package you want to add as dependency
-usethis::use_package("emo")
+usethis::use_package("googlesheets4")
 
 ## Add modules ----
 ## Create a module infrastructure in R/
-golem::add_module( name = "draw_box" ) # Name of the module
+golem::add_module( name = "save_box" ) # Name of the module
 golem::add_module( name = "name_of_module2" ) # Name of the module
 
 ## Add helper functions ----
 ## Creates ftc_* and utils_*
-golem::add_fct( "helpers" ) 
+golem::add_fct( "db_handling" ) 
 golem::add_utils( "helpers" )
 
 ## External resources
