@@ -41,7 +41,7 @@ app_ui <- function(request) {
             h2("summary statistics"),
             fullRow(
               fullColumn(width = 4,
-                h2("distribution bar plot")
+                plotOutput("label_dist_plot")
               ),
               fullColumn(width = 4,
                 "first mean plot"
