@@ -17,7 +17,5 @@ app_server <- function( input, output, session ) {
   callModule(mod_save_box_server, "save_box_ui",r = r , r_id = "db")
   
   # explore database section
-  output$label_dist_plot <- renderPlot({
-    YesNoDetect::plot_label_dist(r$current_db)
-  })
+  callModule(mod_explore_db_server, "explore_db_ui", r = r)
 }

@@ -23,6 +23,8 @@ mod_save_box_ui <- function(id){
     tags$br(),
     "After your drawing is saved it vanishes.",
     tags$br(),
+    "Please do not save random or falsely labeled drawings.",
+    tags$br(),
     "Caution: this step can not be undone!",
     tags$br(),tags$br(),
     actionButton(ns("save"), "Save",icon = icon("save"),

@@ -3,6 +3,7 @@
 export(append_row_db)
 export(build_matrix)
 export(get_current_db)
+export(plot_average_box)
 export(plot_label_dist)
 export(run_app)
 import(dplyr)

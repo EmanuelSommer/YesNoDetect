@@ -29,28 +29,14 @@ app_ui <- function(request) {
       fullSection(
         menu = "intro",
         h1("YesNoDetect"),
-        h2("Shiny Applicaton for the prediction of handwritten Yes or No boxes. 
-           Moreover feeding the database of the Neural Network used to predict the boxes"),
-        "links and more details"
+        h4("Shiny applicaton for the prediction of handwritten yes or no boxes."),
+        h4("Moreover feeding the database for the convolutional neural network used to predict the boxes."),
+        "links and more details to be done."
       ),
       fullSection(
         menu = "db",
         fullSlide(
-          fullContainer(
-            h1("Explore the database"),
-            h2("summary statistics"),
-            fullRow(
-              fullColumn(width = 4,
-                plotOutput("label_dist_plot")
-              ),
-              fullColumn(width = 4,
-                "first mean plot"
-              ),
-              fullColumn(width = 4,
-                "second mean plot"
-              )
-            )
-          )
+          mod_explore_db_ui("explore_db_ui")
         ),
         fullSlide(
           fullContainer(

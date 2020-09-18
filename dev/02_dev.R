@@ -15,11 +15,11 @@
 
 ## Dependencies ----
 ## Add one line by package you want to add as dependency
-usethis::use_package("googlesheets4")
+usethis::use_package("shinyWidgets")
 
 ## Add modules ----
 ## Create a module infrastructure in R/
-golem::add_module( name = "save_box" ) # Name of the module
+golem::add_module( name = "explore_db" ) # Name of the module
 golem::add_module( name = "name_of_module2" ) # Name of the module
 
 ## Add helper functions ----
