@@ -42,7 +42,7 @@ mod_explore_db_ui <- function(id){
              ),
              column(1),
     ),
-    actionButton(ns("refresh_db"), "Refresh database",icon = icon("cloud-download-alt"),
+    actionButton(ns("refresh_db"), "Reload database",icon = icon("cloud-download-alt"),
                  style="color: #1AA7ED; background-color: #FFFFFF; border-color: #FFFFFF")
   )
 }
