@@ -15,7 +15,7 @@ mod_draw_box_ui <- function(id){
     tags$br(),tags$br(),
     column(12,align = "center",
            plotOutput(ns("plot"), width = "300px", height = "300px",
-                      hover=hoverOpts(id = ns("hover"), delay = 40,
+                      hover=hoverOpts(id = ns("hover"), delay = 50,
                                       delayType = "throttle", clip = TRUE, nullOutside = TRUE),
                       click=ns("click")),
            tags$br()),
