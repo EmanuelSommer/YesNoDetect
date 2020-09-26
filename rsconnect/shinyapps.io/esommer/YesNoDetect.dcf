@@ -1,0 +1,12 @@
+name: YesNoDetect
+title: YesNoDetect
+username:
+account: esommer
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2893055
+bundleId: 3673612
+url: https://esommer.shinyapps.io/YesNoDetect/
+when: 1601131301.6981
+asMultiple: FALSE
+asStatic: FALSE

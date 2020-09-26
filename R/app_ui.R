@@ -26,6 +26,7 @@ app_ui <- function(request) {
         "Model" = "model",
         "Predict" = "pred"
       ),
+      ################################ START ###################################
       fullSection(
         menu = "intro",
         h1(emo::ji_glue("Handwritten :white_check_mark: and :x: detector")),
@@ -36,6 +37,7 @@ app_ui <- function(request) {
         tags$br(),
         "links and more details to be done." #hier ein schaubild rein vll mit powerpoint machen
       ),
+      ################################ DATABASE ################################
       fullSection(
         menu = "db",
         fullSlide(
@@ -53,11 +55,13 @@ app_ui <- function(request) {
           )
         )
       ),
+      ################################ MODEL ###################################
       fullSection(
         menu = "model",
         h1("The current model"),
         h2("To be done.")
       ),
+      ################################ PREDICT #################################
       fullSection(
         menu = "pred",
         h1("Predict!"),
