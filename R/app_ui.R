@@ -32,7 +32,7 @@ app_ui <- function(request) {
         h1(emo::ji_glue("Handwritten :white_check_mark: and :x: detector")),
         tags$br(),tags$br(),
         h4("Shiny applicaton for the prediction of handwritten yes or no boxes."),
-        h4("Moreover feeding the database for the convolutional neural network used to predict the boxes."),
+        h4("Moreover feeding a database of such boxes which is the base for the convolutional neural network used to predict the boxes."),
         "Disclaimer: This application is built as a desktop application and thus is not fully operational on touchscreens.",
         tags$br(),
         "links and more details to be done." #hier ein schaubild rein vll mit powerpoint machen

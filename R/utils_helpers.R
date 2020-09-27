@@ -15,6 +15,10 @@
 build_matrix <- function(x,y) {
   x <- round(x)
   y <- round(y)
+  x[x>28] <- 28
+  x[x<1] <- 1
+  y[y>28] <- 28
+  y[y<1] <- 1
   y <- 29 - y #invert plot y axis to get index
   df <- data.frame(x = x, y = y) %>%
     dplyr::distinct()
