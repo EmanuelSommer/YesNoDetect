@@ -10,6 +10,11 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here 
+    waiter::use_waiter(),
+    waiter::waiter_show_on_load(html = tagList(waiter::spin_loaders(37),
+                                               h4("Initialization"),
+                                               h5("Loading the database may take a moment.")),
+                                color = "#1AA7ED"),
     fullPage(
       center = TRUE,
       opts = list(

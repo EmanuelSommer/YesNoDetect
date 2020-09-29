@@ -43,9 +43,7 @@ mod_explore_db_ui <- function(id){
              column(1),
     ),
     actionButton(ns("refresh_db"), "Reload database",icon = icon("cloud-download-alt"),
-                 style="color: #1AA7ED; background-color: #FFFFFF; border-color: #FFFFFF"),
-    tags$br(),
-    "(This may take a moment)"
+                 style="color: #1AA7ED; background-color: #FFFFFF; border-color: #FFFFFF")
   )
 }
     
@@ -66,7 +64,12 @@ mod_explore_db_server <- function(input, output, session, r){
   })
   # refresh db
   observeEvent(input$refresh_db, handlerExpr = {
+    waiter::waiter_show(html = tagList(waiter::spin_loaders(37),
+                                       h4("Reload database"),
+                                       h5("This may take a moment.")),
+                        color = "#1AA7ED")
     r$current_db <- YesNoDetect::get_current_db()
+    waiter::waiter_hide()
   })
   
   output$total_valuebox <- shinydashboard::renderValueBox({

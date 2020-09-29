@@ -11,7 +11,8 @@ app_server <- function( input, output, session ) {
   # reactive list for communication between modules
   r <- reactiveValues(x_db=NULL, y_db=NULL)
   r$current_db <- YesNoDetect::get_current_db() # df containing current db
-  
+  # hide waiter
+  waiter::waiter_hide()
   ###################### db ################################
   # amend data base section
   callModule(mod_draw_box_server, "draw_box_db",r = r,r_id = "db")
