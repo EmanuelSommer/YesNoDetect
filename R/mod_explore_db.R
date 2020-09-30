@@ -35,10 +35,10 @@ mod_explore_db_ui <- function(id){
                     plotOutput(ns("label_dist_plot"),width = "400px",height = "300px")
              ),
              column(width = 3,style = "background-color:#1AA7ED;color:#1AA7ED;",
-                    plotOutput(ns("average_yes_plot"),width = "282px",height = "300px")
+                    plotOutput(ns("average_yes_plot"),width = "281.6px",height = "300px")
              ),
              column(width = 3,style = "background-color:#1AA7ED;color:#1AA7ED;",
-                    plotOutput(ns("average_no_plot"),width = "282px",height = "300px")
+                    plotOutput(ns("average_no_plot"),width = "281.6px",height = "300px")
              ),
              column(1),
     ),
