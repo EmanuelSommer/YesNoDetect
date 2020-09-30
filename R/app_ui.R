@@ -34,6 +34,7 @@ app_ui <- function(request) {
       ################################ START ###################################
       fullSection(
         menu = "intro",
+        # img = "www/app_background_brain.png", #potential background image - currently not active
         h1(emo::ji_glue("Handwritten :white_check_mark: and :x: detector")),
         tags$br(),tags$br(),
         h4("Shiny applicaton for the prediction of handwritten yes or no boxes."),
