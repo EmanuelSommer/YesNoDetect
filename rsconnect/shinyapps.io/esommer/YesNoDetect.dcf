@@ -5,8 +5,8 @@ account: esommer
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2893055
-bundleId: 3687085
+bundleId: 3689090
 url: https://esommer.shinyapps.io/YesNoDetect/
-when: 1601468220.52892
+when: 1601498762.69081
 asMultiple: FALSE
 asStatic: FALSE
