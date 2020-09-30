@@ -29,19 +29,19 @@ mod_explore_db_ui <- function(id){
              column(3),
     ),
     tags$br(),tags$br(),
-    fluidRow(style = "background-color:#1AA7ED;color:#1AA7ED;",
+    fluidRow(class = "eda_plots_row",
              column(1),
              column(width = 4,style = "background-color:#1AA7ED;color:#1AA7ED;",
                     plotOutput(ns("label_dist_plot"),width = "400px",height = "300px")
              ),
              column(width = 3,style = "background-color:#1AA7ED;color:#1AA7ED;",
-                    plotOutput(ns("average_yes_plot"),width = "281.6px",height = "300px")
+                    plotOutput(ns("average_yes_plot"),width = "281.8px",height = "300px")
              ),
              column(width = 3,style = "background-color:#1AA7ED;color:#1AA7ED;",
-                    plotOutput(ns("average_no_plot"),width = "281.6px",height = "300px")
+                    plotOutput(ns("average_no_plot"),width = "281.8px",height = "300px")
              ),
              column(1),
-    ),
+    ),tags$head(tags$style(".eda_plots_row{height:300px;background-color: #1AA7ED;}")),
     actionButton(ns("refresh_db"), "Reload database",icon = icon("cloud-download-alt"),
                  style="color: #1AA7ED; background-color: #FFFFFF; border-color: #FFFFFF")
   )
