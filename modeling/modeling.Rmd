@@ -1,0 +1,89 @@
+---
+title: "Modeling"
+author: "Emanuel Sommer"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Set up
+
+## Load Packages
+```{r packages, echo=TRUE,results='hide'}
+### Load YesNoDetect
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+
+### Load additional packages
+
+```
+
+## Get Data
+```{r get data, warning=FALSE}
+data <- get_current_db()
+```
+
+## Plot average boxes
+```{r visualize average boxes}
+plot_average_box(data,sel_label = "x")+theme(plot.background = element_blank(),
+                                             panel.background = element_blank(),
+                                             panel.border = element_rect(color = "black"))
+plot_average_box(data, sel_label = "y")+theme(plot.background = element_blank(),
+                                             panel.background = element_blank(),
+                                             panel.border = element_rect(color = "black"))
+```
+
+
+## Aggregate Data
+
+
+
+
+
+
+# The Model
+
+# Model valuation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
