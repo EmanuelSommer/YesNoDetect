@@ -22,7 +22,8 @@ golem::detach_all_attached()
 golem::document_and_reload()
 
 ### Load additional packages
-
+library(tensorflow)
+library(keras)
 ```
 
 ## Get Data
@@ -30,7 +31,8 @@ golem::document_and_reload()
 data <- get_current_db()
 ```
 
-## Plot average boxes
+## Verify data
+### Plot average boxes
 ```{r visualize average boxes}
 plot_average_box(data,sel_label = "x")+theme(plot.background = element_blank(),
                                              panel.background = element_blank(),
@@ -40,15 +42,108 @@ plot_average_box(data, sel_label = "y")+theme(plot.background = element_blank(),
                                              panel.border = element_rect(color = "black"))
 ```
 
+### Verify some examples wrt their labels
+```{r}
+some_random_indices <- sample(seq(data$label),10)
+table(data$label[some_random_indices])
+for(i in 1:10){
+  print(plot_average_box(data[some_random_indices[i],],sel_label = data$label[some_random_indices[i]])+
+  labs(title = paste("Label:",data$label[some_random_indices[i]]),
+       subtitle = paste("Index:", some_random_indices[i]))+
+  theme(plot.background = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black")))
+}
+```
 
-## Aggregate Data
+
+
+## Preprocess data
+```{r}
+# x data
+data_x <- data %>%
+  select(-label)
+dim_data_orig <- dim(data_x)
+data_x_array <- as.array(as.matrix(data_x)) %>%
+  array_reshape(dim = c(dim_data_orig[1],28,28),order = "C")%>%
+  array_reshape(., dim = c(dim(.), 1))
+
+# train test split
+# 20 percent test data
+set.seed(2)
+train_indices <- sample(which(data$label == "y"),size = round(0.8*sum(data$label == "y")))
+train_indices <- c(train_indices,
+                   sample(which(data$label == "x"),size = round(0.8*sum(data$label == "x"))))
+
+y_train <- data$label[train_indices]
+y_test <- data$label[-train_indices]
+
+print("Original distribution of labels:")
+table(data$label)/length(data$label)
+print("Train distribution of labels:")
+table(y_train)/length(y_train)
+print("Test distribution, of labels:")
+table(y_test)/length(y_test)
+
+y_train_dummy <- ifelse(y_train == "y",1,0)
+y_test_dummy <- ifelse(y_test == "y",1,0)
+
+x_train <- data_x_array[train_indices,,,] %>%
+  array_reshape(., dim = c(dim(.), 1))
+x_test <- data_x_array[-train_indices,,,] %>%
+  array_reshape(., dim = c(dim(.), 1))
+
+print("Dimensions of train and test data are fine:")
+dim_data_orig[1] == dim(x_train)[1]+dim(x_test)[1]
+```
+
+
+# The model
+
+```{r}
+# define model
+model_1 <- keras_model_sequential() %>%
+  layer_conv_2d(filters = 32,
+                kernel_size = c(3,3),
+                activation = "relu",
+                input_shape = c(28,28,1)) %>%
+  layer_max_pooling_2d(pool_size = c(2,2)) %>%
+  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>%
+  layer_max_pooling_2d(pool_size = c(2,2)) %>%
+  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>%
+  layer_flatten() %>% 
+  layer_dense(units = 128, activation = "relu") %>% 
+  layer_dense(units = 2, activation = "softmax")
+
+summary(model_1)
+```
+
+```{r}
+# compile
+model_1 %>% 
+  compile(loss = "sparse_categorical_crossentropy",
+          optimizer = "adam",
+          metrics = "accuracy")
+```
+
+```{r}
+# fit model
+model_1 %>%
+  fit(
+    x = x_train,
+    y = y_train_dummy,
+    batch_size = NULL,
+    epochs = 10,
+    validation_sample = 0.2,
+    verbose = 2
+  )
+
+```
 
 
 
 
 
-
-# The Model
 
 # Model valuation
 
