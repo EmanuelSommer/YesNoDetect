@@ -85,8 +85,8 @@ table(y_train)/length(y_train)
 print("Test distribution, of labels:")
 table(y_test)/length(y_test)
 
-y_train_dummy <- ifelse(y_train == "y",1,0)
-y_test_dummy <- ifelse(y_test == "y",1,0)
+y_train_keras <- to_categorical(ifelse(y_train == "y",1,0))
+y_test_keras <- to_categorical(ifelse(y_test == "y",1,0))
 
 x_train <- data_x_array[train_indices,,,] %>%
   array_reshape(., dim = c(dim(.), 1))
@@ -121,24 +121,27 @@ summary(model_1)
 ```{r}
 # compile
 model_1 %>% 
-  compile(loss = "sparse_categorical_crossentropy",
+  compile(loss = "binary_crossentropy",
           optimizer = "adam",
           metrics = "accuracy")
 ```
 
 ```{r}
 # fit model
-model_1 %>%
+history_model_1 <- model_1 %>%
   fit(
     x = x_train,
-    y = y_train_dummy,
+    y = y_train_keras,
     batch_size = NULL,
     epochs = 10,
+    view_metrics = FALSE,
     validation_sample = 0.2,
-    verbose = 2
+    verbose = 1
   )
 
+plot(history_model_1)
 ```
+
 
 
 
@@ -147,11 +150,44 @@ model_1 %>%
 
 # Model valuation
 
+```{r}
+# evaluate model
+print("Model 1:")
+evaluate(model_1,x_test,y_test_keras,verbose = 0)
+```
+
+```{r}
+# have a look at falsely labeled ones
+pred_mod_1_full <- predict_proba(model_1,data_x_array,verbose = 0)
+pred_mod_1_full <- apply(pred_mod_1_full, 1, function(x){ifelse(which.max(x) == 2,"y","x")})
+print("Accuracy on the whole set:")
+mean(pred_mod_1_full == data$label)
+print("Number of misclassified in the whole set:")
+sum(pred_mod_1_full != data$label)
+
+```
 
 
 
+```{r}
+#plot falsely labeled ones (helper function)
+plot_falsely_labeled <- function(pred_full_vec){
+  falsely_labeled <- which(pred_full_vec != data$label)
 
+  for(i in falsely_labeled){
+    print(plot_average_box(data[i,],sel_label = data$label[i])+
+          labs(title = paste("Label:",data$label[i], " Prediction:",pred_full_vec[i]),
+               subtitle = paste("Index:", i))+
+          theme(plot.background = element_blank(),
+                panel.background = element_blank(),
+                panel.border = element_rect(color = "black"))
+          )
+  }
+}
 
+#model 1
+plot_falsely_labeled(pred_mod_1_full)
+```
 
 
 
