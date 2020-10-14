@@ -98,7 +98,21 @@ dim_data_orig[1] == dim(x_train)[1]+dim(x_test)[1]
 ```
 
 
-# The model
+# The models
+
+## Model 1 Definition
+
+architecture:
+
+* Input: 28*28 boolean matrix
+* Layer 1: Convolutional layer, kernel size = 3*3, padding = 0, stride = 1, filters = 32, activation = relu
+* Layer 2: Max Pooling layer, kernel size = 2*2, padding = 0, stride = 2
+* Layer 3: Convolutional layer, kernel size = 3*3, padding = 0, stride = 1, filters = 64, activation = relu
+* Layer 4: Max Pooling layer, kernel size = 2*2, padding = 0, stride = 2
+* Layer 5: Convolutional layer, kernel size = 3*3, padding = 0, stride = 1, filters = 64, activation = relu
+* Layer 6: Flatten
+* Layer 7: Dense layer, units = 128, activation = relu
+* Layer 8: Dense layer, units = 2, , activation = softmax
 
 ```{r}
 # define model
@@ -106,11 +120,11 @@ model_1 <- keras_model_sequential() %>%
   layer_conv_2d(filters = 32,
                 kernel_size = c(3,3),
                 activation = "relu",
-                input_shape = c(28,28,1)) %>%
+                input_shape = c(28,28,1)) %>% # layer 1
   layer_max_pooling_2d(pool_size = c(2,2)) %>%
-  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>%
+  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>% # layer 3
   layer_max_pooling_2d(pool_size = c(2,2)) %>%
-  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>%
+  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>% # layer 5
   layer_flatten() %>% 
   layer_dense(units = 128, activation = "relu") %>% 
   layer_dense(units = 2, activation = "softmax")
@@ -118,9 +132,80 @@ model_1 <- keras_model_sequential() %>%
 summary(model_1)
 ```
 
+## Model 2 Definition
+
+architecture:
+
+* Input: 28*28 boolean matrix
+* Layer 1: Convolutional layer, kernel size = 5*5, padding = 0, stride = 1, filters = 32, activation = relu
+* Layer 2: Max Pooling layer, kernel size = 2*2, padding = 0, stride = 2
+* Layer 3: Convolutional layer, kernel size = 5*5, padding = 0, stride = 1, filters = 32, activation = relu
+* Layer 4: Max Pooling layer, kernel size = 2*2, padding = 0, stride = 2
+* Layer 5: Convolutional layer, kernel size = 4*4, padding = 0, stride = 1, filters = 64, activation = linear
+* Layer 6: Flatten
+* Layer 7: Dense layer, units = 256, activation = relu
+* Layer 8: Dense layer, units = 2, , activation = softmax
+
+```{r}
+model_2 <- keras_model_sequential() %>%
+  layer_conv_2d(filters = 32,
+                kernel_size = c(5,5),
+                activation = "relu",
+                input_shape = c(28,28,1)) %>%
+  layer_max_pooling_2d(pool_size = c(2,2)) %>%
+  layer_conv_2d(filters = 32, kernel_size = c(5,5), activation = "relu") %>%
+  layer_max_pooling_2d(pool_size = c(2,2)) %>%
+  layer_conv_2d(filters = 64, kernel_size = c(4,4), activation = "linear") %>%
+  layer_flatten() %>% 
+  layer_dense(units = 256, activation = "relu") %>% 
+  layer_dense(units = 2, activation = "softmax")
+
+summary(model_2)
+```
+
+## Model 3 Definition
+
+architecture:
+
+* Input: 28*28 boolean matrix
+* Layer 1: Convolutional layer, kernel size = 4*4, padding = 0, stride = 1, filters = 32, activation = relu
+* Layer 2: Max Pooling layer, kernel size = 2*2, padding = 0, stride = 2
+* Layer 3: Convolutional layer, kernel size = 4*4, padding = 0, stride = 1, filters = 32, activation = relu
+* Layer 4: Max Pooling layer, kernel size = 2*2, padding = 0, stride = 2
+* Layer 5: Convolutional layer, kernel size = 4*4, padding = 0, stride = 1, filters = 32, activation = relu
+* Layer 6: Flatten
+* Layer 7: Dense layer, units = 256, activation = relu
+* Layer 8: Dense layer, units = 2, , activation = softmax
+
+```{r}
+model_3 <- keras_model_sequential() %>%
+  layer_conv_2d(filters = 32,
+                kernel_size = c(4,4),
+                activation = "relu",
+                input_shape = c(28,28,1)) %>%
+  layer_max_pooling_2d(pool_size = c(2,2)) %>%
+  layer_conv_2d(filters = 32, kernel_size = c(4,4), activation = "relu") %>%
+  layer_max_pooling_2d(pool_size = c(2,2)) %>%
+  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>%
+  layer_flatten() %>% 
+  layer_dense(units = 256, activation = "relu") %>% 
+  layer_dense(units = 2, activation = "softmax")
+
+summary(model_3)
+```
+
+## Model Compilation and Fitting
 ```{r}
 # compile
 model_1 %>% 
+  compile(loss = "binary_crossentropy",
+          optimizer = "adam",
+          metrics = "accuracy")
+model_2 %>% 
+  compile(loss = "binary_crossentropy",
+          optimizer = "adam",
+          metrics = "accuracy")
+model_3 %>% 
   compile(loss = "binary_crossentropy",
           optimizer = "adam",
           metrics = "accuracy")
@@ -138,8 +223,31 @@ history_model_1 <- model_1 %>%
     validation_sample = 0.2,
     verbose = 1
   )
+history_model_2 <- model_2 %>%
+  fit(
+    x = x_train,
+    y = y_train_keras,
+    batch_size = NULL,
+    epochs = 10,
+    view_metrics = FALSE,
+    validation_sample = 0.2,
+    verbose = 1
+  )
+history_model_3 <- model_3 %>%
+  fit(
+    x = x_train,
+    y = y_train_keras,
+    batch_size = NULL,
+    epochs = 10,
+    view_metrics = FALSE,
+    validation_sample = 0.2,
+    verbose = 1
+  )
 
-plot(history_model_1)
+plot(history_model_1)+labs(title = "Model 1")
+plot(history_model_2)+labs(title = "Model 2")
+plot(history_model_3)+labs(title = "Model 3")
+
 ```
 
 
@@ -150,13 +258,20 @@ plot(history_model_1)
 
 # Model valuation
 
+## Performance on test set
 ```{r}
 # evaluate model
 print("Model 1:")
 evaluate(model_1,x_test,y_test_keras,verbose = 0)
+print("Model 2:")
+evaluate(model_2,x_test,y_test_keras,verbose = 0)
+print("Model 3:")
+evaluate(model_3,x_test,y_test_keras,verbose = 0)
 ```
 
+## Falsely labeled observations
 ```{r}
+### Model 1
 # have a look at falsely labeled ones
 pred_mod_1_full <- predict_proba(model_1,data_x_array,verbose = 0)
 pred_mod_1_full <- apply(pred_mod_1_full, 1, function(x){ifelse(which.max(x) == 2,"y","x")})
@@ -167,7 +282,29 @@ sum(pred_mod_1_full != data$label)
 
 ```
 
+```{r}
+### Model 2
+# have a look at falsely labeled ones
+pred_mod_2_full <- predict_proba(model_2,data_x_array,verbose = 0)
+pred_mod_2_full <- apply(pred_mod_2_full, 1, function(x){ifelse(which.max(x) == 2,"y","x")})
+print("Accuracy on the whole set:")
+mean(pred_mod_2_full == data$label)
+print("Number of misclassified in the whole set:")
+sum(pred_mod_2_full != data$label)
 
+```
+
+```{r}
+### Model 3
+# have a look at falsely labeled ones
+pred_mod_3_full <- predict_proba(model_3,data_x_array,verbose = 0)
+pred_mod_3_full <- apply(pred_mod_3_full, 1, function(x){ifelse(which.max(x) == 2,"y","x")})
+print("Accuracy on the whole set:")
+mean(pred_mod_3_full == data$label)
+print("Number of misclassified in the whole set:")
+sum(pred_mod_3_full != data$label)
+
+```
 
 ```{r}
 #plot falsely labeled ones (helper function)
@@ -185,20 +322,50 @@ plot_falsely_labeled <- function(pred_full_vec){
   }
 }
 
-#model 1
+# plots model 1
 plot_falsely_labeled(pred_mod_1_full)
 ```
+```{r}
+# plots model 2
+plot_falsely_labeled(pred_mod_2_full)
+```
+
+```{r}
+# plots model 3
+plot_falsely_labeled(pred_mod_3_full)
+```
+
+## Choose current best model:
+
+Model 2
 
 
 
+# Save Model
 
+```{r}
+save_model_tf(model_2,filepath = "current_cnn")
+```
 
+Save important model metrics:
+Number of trainable params
+test accuracy
+size test set (20 percent of the whole)
 
-
-
-
-
-
+```{r}
+metrics_list <- list(trainable_params = 76450,
+                     test_acc = 1,
+                     size_test_set = length(data$label)-length(train_indices),
+                     size_training_data = length(train_indices),
+                     loss = "binary crossentropy",
+                     optimizer = "adam")
+# save(
+#   metrics_list,
+#   file = "current_cnn_metrics.RData"
+# )
+# load("current_cnn_metrics.RData")
+usethis::use_data(metrics_list,overwrite = TRUE)
+```
 
 
 

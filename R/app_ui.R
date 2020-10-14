@@ -64,8 +64,14 @@ app_ui <- function(request) {
       ################################ MODEL ###################################
       fullSection(
         menu = "model",
-        h1("The current model"),
-        h2("To be done.")
+        fullSlide(
+          h1("The model architecture"),
+          tags$br(),tags$br(),
+          img(src = "www/cnn_scheme.png",width = "900px")
+        ),
+        fullSlide(
+          mod_model_stats_ui("model_stats_ui_1")
+        )
       ),
       ################################ PREDICT #################################
       fullSection(

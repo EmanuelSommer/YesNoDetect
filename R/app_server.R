@@ -11,6 +11,8 @@ app_server <- function( input, output, session ) {
   # reactive list for communication between modules
   r <- reactiveValues(x_db=NULL, y_db=NULL)
   r$current_db <- YesNoDetect::get_current_db() # df containing current db
+  # get current cnn
+  # model <- keras::load_model_tf("modeling/current_cnn")
   # hide waiter
   waiter::waiter_hide()
   ###################### db ################################
@@ -22,5 +24,6 @@ app_server <- function( input, output, session ) {
   callModule(mod_explore_db_server, "explore_db_ui", r = r)
   
   ##################### model ##############################
+  callModule(mod_model_stats_server, "model_stats_ui_1")
   ##################### predict ############################
 }
