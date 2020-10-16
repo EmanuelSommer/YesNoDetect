@@ -11,6 +11,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # List the first level UI elements here 
     waiter::use_waiter(),
+    shinyWidgets::useShinydashboardPlus(),
     waiter::waiter_show_on_load(html = tagList(waiter::spin_loaders(37),
                                                h4("Initialization"),
                                                h5("Loading the database may take a moment.")),
@@ -37,11 +38,15 @@ app_ui <- function(request) {
         # img = "www/app_background_brain.png", #potential background image - currently not active
         h1(emo::ji_glue("Handwritten :white_check_mark: and :x: detector")),
         tags$br(),tags$br(),
-        h4("Shiny applicaton for the prediction of handwritten yes or no boxes."),
-        h4("Moreover feeding a database of such boxes which is the base for the convolutional neural network used to predict the boxes."),
+        h3("Web applicaton for the prediction of handwritten yes or no boxes using a convolutional neural network."),
+        h4(strong("Database:"),"Explore and amend the database which is the foundation of the modeling process."),
+        h4(strong("Model:"),"The current model architecture, stats and valuaton metrics."),
+        h4(strong("Predict:"),"Challenge the model with your drawings and recieve prediction probabilities."),
         "Disclaimer: This application is built as a desktop application and thus is not fully operational on touchscreens.",
         tags$br(),
-        "links and more details to be done." #hier ein schaubild rein vll mit powerpoint machen
+        "Written in R by Emanuel Sommer. For feedback and issues visit me on GitHub.",
+        tags$br(),tags$br(),
+        shinydashboardPlus::socialButton("https://github.com/EmanuelSommer",type = "github")
       ),
       ################################ DATABASE ################################
       fullSection(
@@ -76,8 +81,16 @@ app_ui <- function(request) {
       ################################ PREDICT #################################
       fullSection(
         menu = "pred",
-        h1("Predict!"),
-        h2("To be done.")
+        fullContainer(
+          h1("Predict!"),
+          fullColumn(width = 6,
+                     h2(tags$strong("1")),
+                     mod_draw_box_ui("draw_box_pred")
+          ),
+          fullColumn(width = 6,
+                     mod_pred_box_ui("pred_box_ui")
+          )
+        )
       )
     )
   )

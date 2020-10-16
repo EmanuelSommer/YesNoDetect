@@ -354,7 +354,7 @@ size test set (20 percent of the whole)
 
 ```{r}
 metrics_list <- list(trainable_params = 76450,
-                     test_acc = 1,
+                     test_acc = 0.986,
                      size_test_set = length(data$label)-length(train_indices),
                      size_training_data = length(train_indices),
                      loss = "binary crossentropy",
@@ -366,10 +366,6 @@ metrics_list <- list(trainable_params = 76450,
 # load("current_cnn_metrics.RData")
 usethis::use_data(metrics_list,overwrite = TRUE)
 ```
-
-
-
-
 
 
 
