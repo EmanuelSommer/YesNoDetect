@@ -45,6 +45,7 @@ plot_average_box(data, sel_label = "y")+theme(plot.background = element_blank(),
 ### Verify some examples wrt their labels
 ```{r}
 some_random_indices <- sample(seq(data$label),10)
+# some_random_indices <- c(425:433) # the not so random way :)
 table(data$label[some_random_indices])
 for(i in 1:10){
   print(plot_average_box(data[some_random_indices[i],],sel_label = data$label[some_random_indices[i]])+
@@ -218,7 +219,7 @@ history_model_1 <- model_1 %>%
     x = x_train,
     y = y_train_keras,
     batch_size = NULL,
-    epochs = 10,
+    epochs = 15,
     view_metrics = FALSE,
     validation_sample = 0.2,
     verbose = 1
@@ -228,7 +229,7 @@ history_model_2 <- model_2 %>%
     x = x_train,
     y = y_train_keras,
     batch_size = NULL,
-    epochs = 10,
+    epochs = 12,
     view_metrics = FALSE,
     validation_sample = 0.2,
     verbose = 1
@@ -238,7 +239,7 @@ history_model_3 <- model_3 %>%
     x = x_train,
     y = y_train_keras,
     batch_size = NULL,
-    epochs = 10,
+    epochs = 20,
     view_metrics = FALSE,
     validation_sample = 0.2,
     verbose = 1
@@ -325,6 +326,7 @@ plot_falsely_labeled <- function(pred_full_vec){
 # plots model 1
 plot_falsely_labeled(pred_mod_1_full)
 ```
+
 ```{r}
 # plots model 2
 plot_falsely_labeled(pred_mod_2_full)
@@ -354,7 +356,7 @@ size test set (20 percent of the whole)
 
 ```{r}
 metrics_list <- list(trainable_params = 76450,
-                     test_acc = 0.986,
+                     test_acc = 0.973,
                      size_test_set = length(data$label)-length(train_indices),
                      size_training_data = length(train_indices),
                      loss = "binary crossentropy",
