@@ -54,13 +54,15 @@ mod_explore_db_server <- function(input, output, session, r){
   ns <- session$ns
   
   output$label_dist_plot <- renderPlot({
-    YesNoDetect::plot_label_dist(r$current_db)
+    YesNoDetect::plot_label_dist(data.frame(label = r$current_labels))
   })
+  # the following two plots are not refreshed every session because this would require the whole database to be comupted which overloads
+  # the memory capacity of the server
   output$average_yes_plot <- renderPlot({
-    YesNoDetect::plot_average_box(r$current_db,"y")
+    YesNoDetect::average_yes_plot
   })
   output$average_no_plot <- renderPlot({
-    YesNoDetect::plot_average_box(r$current_db,"x")
+    YesNoDetect::average_no_plot
   })
   # refresh db
   observeEvent(input$refresh_db, handlerExpr = {
@@ -68,20 +70,20 @@ mod_explore_db_server <- function(input, output, session, r){
                                        h4("Reload database"),
                                        h5("This may take a moment.")),
                         color = "#1AA7ED")
-    r$current_db <- YesNoDetect::get_current_db()
+    r$current_labels <- YesNoDetect::get_current_labels()
     waiter::waiter_hide()
   })
   
   output$total_valuebox <- shinydashboard::renderValueBox({
-    shinydashboard::valueBox(length(r$current_db$label),subtitle = "Total boxes",icon = icon("database"),
+    shinydashboard::valueBox(length(r$current_labels),subtitle = "Total boxes",icon = icon("database"),
                              color = "yellow",width = NULL)
   })
   output$yes_valuebox <- shinydashboard::renderValueBox({
-    shinydashboard::valueBox(sum(r$current_db$label == "y"),subtitle = "Yes boxes",icon = icon("check"),
+    shinydashboard::valueBox(sum(r$current_labels == "y"),subtitle = "Yes boxes",icon = icon("check"),
                              color = "green",width = NULL)
   })
   output$no_valuebox <- shinydashboard::renderValueBox({
-    shinydashboard::valueBox(sum(r$current_db$label == "x"),subtitle = "No boxes",icon = icon("times"),
+    shinydashboard::valueBox(sum(r$current_labels == "x"),subtitle = "No boxes",icon = icon("times"),
                              color = "red",width = NULL)
   })
 }

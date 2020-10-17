@@ -33,6 +33,7 @@ data <- get_current_db()
 
 ## Verify data
 ### Plot average boxes
+also save these plots to the package s.t. the plots must not be comupted in every session to reduce loading time and memory usage of the server
 ```{r visualize average boxes}
 plot_average_box(data,sel_label = "x")+theme(plot.background = element_blank(),
                                              panel.background = element_blank(),
@@ -40,6 +41,10 @@ plot_average_box(data,sel_label = "x")+theme(plot.background = element_blank(),
 plot_average_box(data, sel_label = "y")+theme(plot.background = element_blank(),
                                              panel.background = element_blank(),
                                              panel.border = element_rect(color = "black"))
+average_no_plot <- plot_average_box(data,sel_label = "x")
+average_yes_plot <- plot_average_box(data, sel_label = "y")
+usethis::use_data(average_no_plot,overwrite = TRUE)
+usethis::use_data(average_yes_plot,overwrite = TRUE)
 ```
 
 ### Verify some examples wrt their labels

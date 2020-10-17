@@ -11,7 +11,8 @@ app_server <- function( input, output, session ) {
   # reactive list for communication between modules
   r <- reactiveValues(x_db=NULL, y_db=NULL,x_pred=NULL,y_pred=NULL, # these record the drawings
                       pred_yes = NULL,pred_no = NULL) # these save the predictions
-  r$current_db <- YesNoDetect::get_current_db() # df containing current db
+  # r$current_db <- YesNoDetect::get_current_db() # df containing current db
+  r$current_labels <- YesNoDetect::get_current_labels()
   # get current cnn
   r$model <- keras::load_model_tf("modeling/current_cnn")
   # hide waiter

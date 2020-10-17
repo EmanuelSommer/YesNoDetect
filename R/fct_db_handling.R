@@ -8,6 +8,17 @@ get_current_db <- function(){
   googlesheets4::read_sheet("1FNtRCnRvzYjxvcSVqGtgpypZuJS7gf10oDn3-6nXXDs")
 }
 
+#' Return current labels of database as dataframe
+#'
+#' @return chr strin with the current labels of the database
+#' @export
+#'
+#' @author Emanuel Sommer
+get_current_labels <- function() {
+  a <- googlesheets4::read_sheet("1FNtRCnRvzYjxvcSVqGtgpypZuJS7gf10oDn3-6nXXDs",range = "ADE:ADE")
+  a$label
+}
+
 #' Add a labeled matrix containing the handwritten box data to the database
 #'
 #' @param mat numeric matrix containing the handwritten box data
