@@ -21,7 +21,7 @@ mod_draw_box_ui <- function(id){
            tags$br()),
     tags$br(),
     actionButton(ns("reset"), "Reset drawing",icon = icon("redo"),
-                 style="color: #1AA7ED; background-color: #FFFFFF; border-color: #FFFFFF")
+                 style="color: #74CDED; background-color: #FFFFFF; border-color: #FFFFFF")
   )
 }
     

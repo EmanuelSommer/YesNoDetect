@@ -15,15 +15,15 @@ app_ui <- function(request) {
     waiter::waiter_show_on_load(html = tagList(waiter::spin_loaders(37),
                                                h4("Initialization"),
                                                h5("Loading the database may take a moment.")),
-                                color = "#1AA7ED"),
+                                color = "#74CDED"),
     fullPage(
       center = TRUE,
       opts = list(
         sectionsColor = c(
-          "#1AA7ED",
-          "#1AA7ED",
-          "#1AA7ED",
-          "#1AA7ED"
+          "#74CDED",
+          "#74CDED",
+          "#74CDED",
+          "#74CDED"
         )
       ),
       menu = c(
