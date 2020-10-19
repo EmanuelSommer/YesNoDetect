@@ -1,5 +1,5 @@
 Package: YesNoDetect
-Title: Shiny App for the prediction of  handwritten Yes or No boxes and also to feed the database the Neural Network uses to predict the boxes
+Title: Shiny App for the prediction of handwritten yes or no boxes and also to feed the database the convolutional neural network uses to predict the boxes
 Version: 0.0.0.9000
 Authors@R: person('Emanuel', 'Sommer', email = 'emanuel_sommer@gmx.de', role = c('cre', 'aut'))
 Description: It contains the code for the UI and Server logic for the Shiny App. Moreover all the code managing the work with the database as well as the modeling.
@@ -28,5 +28,6 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
+Depends: R (>= 2.10)
 Suggests: 
     testthat (>= 2.1.0)
