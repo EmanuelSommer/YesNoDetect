@@ -15,9 +15,9 @@ app_ui <- function(request) {
     waiter::waiter_show_on_load(html = tagList(
       div(
         style="color: #000000;",
-        waiter::spin_loaders(37,color = "#000000"),
         h4("Initialization"),
-        h5("Loading the database.")
+        h5("Loading the database."),
+        waiter::spin_loaders(37,color = "#000000")
       )),color = "#E6EFFF"),
     fullPage(
       center = TRUE,

@@ -37,8 +37,8 @@ mod_pred_box_server <- function(input, output, session, r){
       waiter::waiter_show(html = tagList(
         div(
           style="color: #000000;",
-          waiter::spin_loaders(37,color = "#000000"),
-          h4("Compute prediction")
+          h4("Compute prediction"),
+          waiter::spin_loaders(37,color = "#000000")
         )),color = "#E6EFFF")
       pred_mat <- YesNoDetect::build_matrix(r$x_pred,r$y_pred)
       pred_array <- as.array(pred_mat) %>%

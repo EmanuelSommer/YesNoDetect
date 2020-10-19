@@ -69,8 +69,8 @@ mod_explore_db_server <- function(input, output, session, r){
     waiter::waiter_show(html = tagList(
       div(
         style="color: #000000;",
-        waiter::spin_loaders(37,color = "#000000"),
-        h4("Reload database")
+        h4("Reload database"),
+        waiter::spin_loaders(37,color = "#000000")
       )),color = "#E6EFFF")
     r$current_labels <- YesNoDetect::get_current_labels()
     waiter::waiter_hide()
