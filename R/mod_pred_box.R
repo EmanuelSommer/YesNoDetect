@@ -16,7 +16,7 @@ mod_pred_box_ui <- function(id){
     h2(tags$strong("2")),
     h4("Predict"),
     actionButton(ns("predict_button"), "Predict current drawing",icon = icon("brain"),
-                 style="color: #E6EFFF; background-color: #000000; border-color: #000000"),
+                 style="color: #E6EFFF; background-color: #73777F; border-color: #73777F"),
     tags$br(),tags$br(),
     h2(tags$strong("3")),
     h4("Results"),

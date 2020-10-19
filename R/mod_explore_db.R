@@ -13,7 +13,7 @@ mod_explore_db_ui <- function(id){
     shinyWidgets::useShinydashboard(),
     h1("Overview of the database"),
     tags$br(),tags$br(),
-    fluidRow(tags$style(".small-box.bg-yellow { background-color: #BABABA !important; color: #FFFFFF !important; }"),
+    fluidRow(tags$style(".small-box.bg-yellow { background-color: #73777F !important; color: #FFFFFF !important; }"),
              tags$style(".small-box.bg-green { background-color: #409932 !important; color: #FFFFFF !important; }"),
              tags$style(".small-box.bg-red { background-color: #B50945 !important; color: #FFFFFF !important; }"),
              column(3),
@@ -43,7 +43,7 @@ mod_explore_db_ui <- function(id){
              column(1),
     ),tags$head(tags$style(".eda_plots_row{height:300px;background-color: #E6EFFF;color: #E6EFFF}")),
     actionButton(ns("refresh_db"), "Reload database",icon = icon("cloud-download-alt"),
-                 style="color: #E6EFFF; background-color: #000000; border-color: #000000")
+                 style="color: #E6EFFF; background-color: #73777F; border-color: #73777F")
   )
 }
     
