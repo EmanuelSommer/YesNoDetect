@@ -361,7 +361,7 @@ size test set (20 percent of the whole)
 
 ```{r}
 metrics_list <- list(trainable_params = 76450,
-                     test_acc = 0.994,
+                     test_acc = 0.979,
                      size_test_set = length(data$label)-length(train_indices),
                      size_training_data = length(train_indices),
                      loss = "binary crossentropy",

@@ -28,7 +28,7 @@ mod_save_box_ui <- function(id){
     "Caution: this step can not be undone!",
     tags$br(),tags$br(),
     actionButton(ns("save"), "Save",icon = icon("save"),
-                 style="color: #3EC73A; background-color: #FFFFFF; border-color: #FFFFFF")
+                 style="color: #3EC73A; background-color: #000000; border-color: #000000")
   )
 }
     

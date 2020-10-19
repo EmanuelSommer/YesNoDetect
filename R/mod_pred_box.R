@@ -16,7 +16,7 @@ mod_pred_box_ui <- function(id){
     h2(tags$strong("2")),
     h4("Predict"),
     actionButton(ns("predict_button"), "Predict current drawing",icon = icon("brain"),
-                 style="color: #74CDED; background-color: #FFFFFF; border-color: #FFFFFF"),
+                 style="color: #E6EFFF; background-color: #000000; border-color: #000000"),
     tags$br(),tags$br(),
     h2(tags$strong("3")),
     h4("Results"),
@@ -34,9 +34,12 @@ mod_pred_box_server <- function(input, output, session, r){
   
   observeEvent(input$predict_button,{
     if(!is.null(r$x_pred)){
-      waiter::waiter_show(html = tagList(waiter::spin_loaders(37),
-                                         h4("Compute prediction")),
-                          color = "#74CDED")
+      waiter::waiter_show(html = tagList(
+        div(
+          style="color: #000000;",
+          waiter::spin_loaders(37,color = "#000000"),
+          h4("Compute prediction")
+        )),color = "#E6EFFF")
       pred_mat <- YesNoDetect::build_matrix(r$x_pred,r$y_pred)
       pred_array <- as.array(pred_mat) %>%
         keras::array_reshape(., dim = c(1,dim(.), 1))

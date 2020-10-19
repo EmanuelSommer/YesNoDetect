@@ -26,11 +26,11 @@ plot_label_dist <- function(data) {
     coord_flip()+
     theme_classic()+
     theme(legend.position = "none",
-          panel.background = element_rect(fill = "#74CDED", color = "#74CDED"),
-          panel.border = element_rect(color = "#74CDED",fill = NA),
-          plot.background = element_rect(fill = "#74CDED", color = "#74CDED"),
-          legend.background = element_rect(fill = "#74CDED", color = "#74CDED"),
-          legend.box.background = element_rect(fill = "#74CDED", color = "#74CDED"))
+          panel.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"),
+          panel.border = element_rect(color = "#E6EFFF",fill = NA),
+          plot.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"),
+          legend.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"),
+          legend.box.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"))
 }
 
 
@@ -68,11 +68,11 @@ plot_average_box <- function(df,sel_label = c("x","y")){
           aspect.ratio = 1,
           axis.text = element_blank(),
           panel.grid = element_blank(),
-          panel.background = element_rect(fill = "#74CDED", color = "#74CDED"),
-          panel.border = element_rect(color = "#74CDED",fill = NA),
-          plot.background = element_rect(fill = "#74CDED", color = "#74CDED"),
-          legend.background = element_rect(fill = "#74CDED", color = "#74CDED"),
-          legend.box.background = element_rect(fill = "#74CDED", color = "#74CDED"))
+          panel.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"),
+          panel.border = element_rect(color = "#E6EFFF",fill = NA),
+          plot.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"),
+          legend.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"),
+          legend.box.background = element_rect(fill = "#E6EFFF", color = "#E6EFFF"))
 }
 
 

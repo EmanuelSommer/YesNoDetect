@@ -31,19 +31,19 @@ mod_explore_db_ui <- function(id){
     tags$br(),tags$br(),
     fluidRow(class = "eda_plots_row",
              column(1),
-             column(width = 4,style = "background-color: #74CDED;color: #74CDED;",
+             column(width = 4,style = "background-color: #E6EFFF;color: #E6EFFF;",
                     plotOutput(ns("label_dist_plot"),width = "400px",height = "300px")
              ),
-             column(width = 3,style = "background-color:#74CDED;color:#74CDED;",
+             column(width = 3,style = "background-color:#E6EFFF;color:#E6EFFF;",
                     plotOutput(ns("average_yes_plot"),width = "282px",height = "300px")
              ),
-             column(width = 3,style = "background-color:#74CDED;color:#74CDED;",
+             column(width = 3,style = "background-color:#E6EFFF;color:#E6EFFF;",
                     plotOutput(ns("average_no_plot"),width = "282px",height = "300px")
              ),
              column(1),
-    ),tags$head(tags$style(".eda_plots_row{height:300px;background-color: #74CDED;color: #74CDED}")),
+    ),tags$head(tags$style(".eda_plots_row{height:300px;background-color: #E6EFFF;color: #E6EFFF}")),
     actionButton(ns("refresh_db"), "Reload database",icon = icon("cloud-download-alt"),
-                 style="color: #74CDED; background-color: #FFFFFF; border-color: #FFFFFF")
+                 style="color: #E6EFFF; background-color: #000000; border-color: #000000")
   )
 }
     
@@ -66,10 +66,12 @@ mod_explore_db_server <- function(input, output, session, r){
   })
   # refresh db
   observeEvent(input$refresh_db, handlerExpr = {
-    waiter::waiter_show(html = tagList(waiter::spin_loaders(37),
-                                       h4("Reload database"),
-                                       h5("This may take a moment.")),
-                        color = "#74CDED")
+    waiter::waiter_show(html = tagList(
+      div(
+        style="color: #000000;",
+        waiter::spin_loaders(37,color = "#000000"),
+        h4("Reload database")
+      )),color = "#E6EFFF")
     r$current_labels <- YesNoDetect::get_current_labels()
     waiter::waiter_hide()
   })
