@@ -56,6 +56,10 @@ You can run the app locally by calling the following:
 YesNoDetect::run_app()
 ```
 
+Note: Of course for the local usage the functions in `fct_db_handling.R`
+must be changed in such a way that they use **your** permissions file
+for googlesheets which also has to be initiated.
+
 ## Structure of the app
 
   - **Database**: Explore and amend the database which is the foundation
