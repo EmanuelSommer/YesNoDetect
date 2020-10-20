@@ -49,7 +49,7 @@ app_ui <- function(request) {
         "Disclaimer: This application is built as a desktop application and thus is not fully operational on touchscreens.",
         tags$br(),
         "Written in R by Emanuel Sommer. For the code, issues and feedback visit me on",
-        tags$a(href = "https://github.com/EmanuelSommer","GitHub.",style = "color: #0E5FF0"),
+        tags$a(href = "https://github.com/EmanuelSommer/YesNoDetect","GitHub.",style = "color: #73777F"),
         tags$br(),tags$br(),
         shinydashboardPlus::socialButton("https://github.com/EmanuelSommer",type = "github")
       ),

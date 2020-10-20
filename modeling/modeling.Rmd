@@ -234,7 +234,7 @@ history_model_2 <- model_2 %>%
     x = x_train,
     y = y_train_keras,
     batch_size = NULL,
-    epochs = 12,
+    epochs = 15,
     view_metrics = FALSE,
     validation_sample = 0.2,
     verbose = 1
@@ -361,7 +361,7 @@ size test set (20 percent of the whole)
 
 ```{r}
 metrics_list <- list(trainable_params = 76450,
-                     test_acc = 0.979,
+                     test_acc = 0.985,
                      size_test_set = length(data$label)-length(train_indices),
                      size_training_data = length(train_indices),
                      loss = "binary crossentropy",
