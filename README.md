@@ -134,9 +134,10 @@ The drawing is not done by clicking, holding and releasing the mouse but
 by click, hover and click again. This is not the intuitive way. As the
 drawing was implemented by an interactive plot using the hover and click
 parameters I could not find a way to change to the intuitive way of
-drawing. Moreover I did not find any other (no interactive plots)
-solutions for handdrawing in shiny apps and efficiently saving the
-drawing numerically.
+drawing, at least not in a reasonable searching period. Moreover I did
+not find any other (no interactive plots) solutions for handdrawing in
+shiny apps and efficiently saving the drawing numerically. I guess some
+Javascript via the shinyjs package could do the trick.
 
 #### Not touch friendly
 
