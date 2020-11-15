@@ -18,5 +18,5 @@ ggplot2 object
 Plot the average handdrawn boxes
 }
 \author{
-Emanuel Sommmer
+Emanuel Sommer
 }

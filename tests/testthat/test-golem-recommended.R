@@ -19,9 +19,9 @@ test_that("app server", {
 #     skip_on_travis()
 #     skip_on_appveyor()
 #     x <- processx::process$new(
-#       "R", 
+#       "R",
 #       c(
-#         "-e", 
+#         "-e",
 #         "pkgload::load_all(here::here());run_app()"
 #       )
 #     )
@@ -30,11 +30,3 @@ test_that("app server", {
 #     x$kill()
 #   }
 # )
-
-
-
-
-
-
-
-

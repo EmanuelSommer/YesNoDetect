@@ -4,7 +4,7 @@
 #' @export
 #'
 #' @author Emanuel Sommer
-get_current_db <- function(){
+get_current_db <- function() {
   googlesheets4::read_sheet("1FNtRCnRvzYjxvcSVqGtgpypZuJS7gf10oDn3-6nXXDs")
 }
 
@@ -15,7 +15,7 @@ get_current_db <- function(){
 #'
 #' @author Emanuel Sommer
 get_current_labels <- function() {
-  a <- googlesheets4::read_sheet("1FNtRCnRvzYjxvcSVqGtgpypZuJS7gf10oDn3-6nXXDs",range = "ADE:ADE")
+  a <- googlesheets4::read_sheet("1FNtRCnRvzYjxvcSVqGtgpypZuJS7gf10oDn3-6nXXDs", range = "ADE:ADE")
   a$label
 }
 
@@ -28,11 +28,11 @@ get_current_labels <- function() {
 #' @export
 #'
 #' @author Emanuel Sommer
-append_row_db <- function(mat,label){
+append_row_db <- function(mat, label) {
   # flatten by row
   temp_num <- as.numeric(t(mat))
-  temp <- as.data.frame(matrix(temp_num,nrow = 1,byrow = TRUE))
-  names(temp) <- paste0("V",1:784)
+  temp <- as.data.frame(matrix(temp_num, nrow = 1, byrow = TRUE))
+  names(temp) <- paste0("V", 1:784)
   temp$label <- label
-  googlesheets4::sheet_append("1FNtRCnRvzYjxvcSVqGtgpypZuJS7gf10oDn3-6nXXDs",temp)
-} 
+  googlesheets4::sheet_append("1FNtRCnRvzYjxvcSVqGtgpypZuJS7gf10oDn3-6nXXDs", temp)
+}

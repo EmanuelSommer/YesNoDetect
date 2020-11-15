@@ -11,17 +11,17 @@
 #'  \item{loss}{Character value for name of the loss function used}
 #'  \item{size_training_data}{Character value for the name of the optimizer used}
 #' }
-#' 
+#'
 "metrics_list"
 
 #' The average yes box plot
 #'
 #' A ggplot2 object that visualizes the average yes box.
-#' 
+#'
 "average_yes_plot"
 
 #' The average no box plot
 #'
 #' A ggplot2 object that visualizes the average no box.
-#' 
+#'
 "average_no_plot"

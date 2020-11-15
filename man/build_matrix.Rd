@@ -18,7 +18,7 @@ a 28x28 matrix of 0 and 1
 First round the vectors and then output binary matrix indicating which points are drawn (the pixels)
 }
 \examples{
-build_matrix(c(1,1,3.3,5,27.9),c(1,1,7.000012,5.555,28))
+build_matrix(c(1, 1, 3.3, 5, 27.9), c(1, 1, 7.000012, 5.555, 28))
 }
 \author{
 Emanuel Sommer
