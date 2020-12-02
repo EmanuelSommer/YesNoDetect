@@ -344,7 +344,7 @@ plot_falsely_labeled(pred_mod_3_full)
 
 ## Choose current best model:
 
-Model 2
+Model 2 (maybe some issues with the right upper corner with x)
 
 
 
@@ -361,7 +361,7 @@ size test set (20 percent of the whole)
 
 ```{r}
 metrics_list <- list(trainable_params = 76450,
-                     test_acc = 0.985,
+                     test_acc = 0.956,
                      size_test_set = length(data$label)-length(train_indices),
                      size_training_data = length(train_indices),
                      loss = "binary crossentropy",
