@@ -26,7 +26,7 @@ Imports:
     keras,
     shinydashboardPlus
 Remotes:
-    github::RinteRface/fullPage
+    github::RinteRface/fullPage,
     github::hadley/emo
 Encoding: UTF-8
 LazyData: true
