@@ -52,7 +52,7 @@ app_ui <- function(request) {
         "Written in R by Emanuel Sommer. For the code, issues and feedback visit me on",
         tags$a(href = "https://github.com/EmanuelSommer/YesNoDetect", "GitHub.", style = "color: #73777F"),
         tags$br(), tags$br(),
-        shinydashboardPlus::socialButton("https://github.com/EmanuelSommer", type = "github")
+        shinydashboardPlus::socialButton("https://github.com/EmanuelSommer", icon = icon("github"))
       ),
       ################################ DATABASE ################################
       fullSection(
