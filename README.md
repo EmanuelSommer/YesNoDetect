@@ -4,7 +4,6 @@
 # YesNoDetect
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 YesNoDetect is a shiny application for the prediction of handwritten ✅
@@ -20,25 +19,29 @@ via the Keras API of Tensorflow.
 The main objectives for me writing this code were to dive into the
 following packages/ frameworks:
 
-  - **golem**: framework for building production-grade shiny
+-   **golem**: framework for building production-grade shiny
     applications
-  - **shinymodules**: modularize shiny apps
-  - **tensorflow/ keras**: modeling deep neural networks
+-   **shinymodules**: modularize shiny apps
+-   **tensorflow/ keras**: modeling deep neural networks
 
 The following packages were also new to me:
 
-  - fullPage: fullPage.js framework for shiny
-  - waiter: waiting screens for shiny
-  - emo: emojis 😜
-  - googlesheets4: use googlesheets (as database)
+-   fullPage: fullPage.js framework for shiny
+-   waiter: waiting screens for shiny
+-   emo: emojis 😜
+-   googlesheets4: use googlesheets (as database)
 
 ## Online version
 
 Have a look at the live version:
 [Link](https://esommer.shinyapps.io/YesNoDetect/)
 
-Note: The application is built as a desktop application and thus is not
-fully operational on touchscreens.
+Notes:
+
+-   The application is hosted free of charge via shinyapps.io and thus
+    requires quite some time to launch.
+-   The application is built as a desktop application and thus is not
+    fully operational on touchscreens.
 
 ## Installation
 
@@ -62,11 +65,11 @@ for googlesheets which also has to be initiated.
 
 ## Structure of the app
 
-  - **Database**: Explore and amend the database which is the foundation
+-   **Database**: Explore and amend the database which is the foundation
     of the modeling process.
-  - **Model**: The current model architecture, stats and valuation
+-   **Model**: The current model architecture, stats and valuation
     metrics.
-  - **Predict**: Challenge the model with your handwritten boxes\!
+-   **Predict**: Challenge the model with your handwritten boxes!
 
 ### Database
 
@@ -81,9 +84,9 @@ flattened 28x28 matrix).
 The first of the two slides of this section does give a short overview
 of the database:
 
-  - absolute number of boxes (yes, no, total)
-  - plot displaying the proportion of yes vs no boxes
-  - plots of the average yes and no box
+-   absolute number of boxes (yes, no, total)
+-   plot displaying the proportion of yes vs no boxes
+-   plots of the average yes and no box
 
 ![Database overview section](demo_pictures/db_overview.png)
 
@@ -92,9 +95,9 @@ of the database:
 The second of the two slides of this section allows the user to amend
 the database:
 
-  - draw the box
-  - label it
-  - save it
+-   draw the box
+-   label it
+-   save it
 
 ![Amend database section](demo_pictures/db_amend.png)
 
@@ -119,12 +122,12 @@ stats of the current model.
 
 ![Model stats](demo_pictures/model_metrics.png)
 
-### Predict\!
+### Predict!
 
 In this last section one can challenge the current model to predict ones
 handwritten ✅ or ❌ boxes and recieves a probability for each class.
 
-![Predict\!](demo_pictures/predict.png)
+![Predict!](demo_pictures/predict.png)
 
 ## Known issues
 
@@ -147,12 +150,10 @@ all. To deal with this one could switch to shinyMobile but I will try
 this out another time.
 
 **If you have any suggestions to solve the known issues or you have new
-ones I would really like to hear from you\!**
+ones I would really like to hear from you!**
 
------
+------------------------------------------------------------------------
 
 <center>
-
-👋 **Have fun\!** 👋
-
+👋 **Have fun!** 👋
 </center>

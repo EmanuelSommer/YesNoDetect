@@ -40,7 +40,10 @@ The following packages were also new to me:
 
 Have a look at the live version: [Link](https://esommer.shinyapps.io/YesNoDetect/)
 
-Note: The application is built as a desktop application and thus is not fully operational on touchscreens.
+Notes: 
+
+- The application is hosted free of charge via shinyapps.io and thus requires quite some time to launch.
+- The application is built as a desktop application and thus is not fully operational on touchscreens.
 
 ## Installation
 
