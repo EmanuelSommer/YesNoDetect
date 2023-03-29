@@ -4,10 +4,11 @@
 # YesNoDetect
 
 <!-- badges: start -->
-<!-- badges: end -->
 
-YesNoDetect is a shiny application for the prediction of handwritten ✅
-or ❌ boxes.
+[![Not
+Maintained](https://img.shields.io/badge/Status-Not%20Maintained-red)](https://github.com/%3CUSERNAME%3E/%3CREPOSITORY%3E)
+<!-- badges: end --> YesNoDetect is a shiny application for the
+prediction of handwritten ✅ or ❌ boxes.
 
 It is written using the golem framework for production-grade and robust
 shiny apps. The shiny app is embedded inside the structure of an R
@@ -19,31 +20,23 @@ via the Keras API of Tensorflow.
 The main objectives for me writing this code were to dive into the
 following packages/ frameworks:
 
--   **golem**: framework for building production-grade shiny
-    applications
--   **shinymodules**: modularize shiny apps
--   **tensorflow/ keras**: modeling deep neural networks
+- **golem**: framework for building production-grade shiny applications
+- **shinymodules**: modularize shiny apps
+- **tensorflow/ keras**: modeling deep neural networks
 
 The following packages were also new to me:
 
--   fullPage: fullPage.js framework for shiny
--   waiter: waiting screens for shiny
--   emo: emojis 😜
--   googlesheets4: use googlesheets (as database)
-
-## Online version
-
-Have a look at the live version:
-[Link](https://esommer.shinyapps.io/YesNoDetect/)
-
-Notes:
-
--   The application is hosted free of charge via shinyapps.io and thus
-    requires quite some time to launch.
--   The application is built as a desktop application and thus is not
-    fully operational on touchscreens.
+- fullPage: fullPage.js framework for shiny
+- waiter: waiting screens for shiny
+- emo: emojis 😜
+- googlesheets4: use googlesheets (as database)
 
 ## Installation
+
+> Please note that the reposatory is no longer maintained and thus the
+> code might be deprecated due to newer non backward compatible versions
+> of the used dependencies. - I promise future projects will make use of
+> `{renv}` 💡
 
 You can install the current version of YesNoDetect with the following
 line of code:
@@ -65,11 +58,11 @@ for googlesheets which also has to be initiated.
 
 ## Structure of the app
 
--   **Database**: Explore and amend the database which is the foundation
-    of the modeling process.
--   **Model**: The current model architecture, stats and valuation
-    metrics.
--   **Predict**: Challenge the model with your handwritten boxes!
+- **Database**: Explore and amend the database which is the foundation
+  of the modeling process.
+- **Model**: The current model architecture, stats and valuation
+  metrics.
+- **Predict**: Challenge the model with your handwritten boxes!
 
 ### Database
 
@@ -84,9 +77,9 @@ flattened 28x28 matrix).
 The first of the two slides of this section does give a short overview
 of the database:
 
--   absolute number of boxes (yes, no, total)
--   plot displaying the proportion of yes vs no boxes
--   plots of the average yes and no box
+- absolute number of boxes (yes, no, total)
+- plot displaying the proportion of yes vs no boxes
+- plots of the average yes and no box
 
 ![Database overview section](demo_pictures/db_overview.png)
 
@@ -95,9 +88,9 @@ of the database:
 The second of the two slides of this section allows the user to amend
 the database:
 
--   draw the box
--   label it
--   save it
+- draw the box
+- label it
+- save it
 
 ![Amend database section](demo_pictures/db_amend.png)
 
@@ -155,5 +148,5 @@ ones I would really like to hear from you!**
 ------------------------------------------------------------------------
 
 <center>
-👋 **Have fun!** 👋
+👋 Have fun! 👋
 </center>

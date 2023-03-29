@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # YesNoDetect
 
 <!-- badges: start -->
+[![Not Maintained](https://img.shields.io/badge/Status-Not%20Maintained-red)](https://github.com/<USERNAME>/<REPOSITORY>)
 <!-- badges: end -->
 YesNoDetect is a shiny application for the prediction of handwritten `r emo::ji("white_check_mark")` or `r emo::ji("x")` boxes.
 
@@ -36,16 +37,9 @@ The following packages were also new to me:
 * emo: emojis `r emo::ji("winking face with tongue")`
 * googlesheets4: use googlesheets (as database)
 
-## Online version
-
-Have a look at the live version: [Link](https://esommer.shinyapps.io/YesNoDetect/)
-
-Notes: 
-
-- The application is hosted free of charge via shinyapps.io and thus requires quite some time to launch.
-- The application is built as a desktop application and thus is not fully operational on touchscreens.
-
 ## Installation
+
+> Please note that the reposatory is no longer maintained and thus the code might be deprecated due to newer non backward compatible versions of the used dependencies. - I promise future projects will make use of `{renv}` `r emo::ji("light_bulb")`
 
 You can install the current version of YesNoDetect with the following line of code:
 
@@ -126,7 +120,7 @@ The app is not touch friendly this does not only apply to the drawing of the box
 ***
 
 <center>
-`r emo::ji("waving_hand")` **Have fun!** `r emo::ji("waving_hand")`
+`r emo::ji("waving_hand")` Have fun! `r emo::ji("waving_hand")`
 </center>
 
 
